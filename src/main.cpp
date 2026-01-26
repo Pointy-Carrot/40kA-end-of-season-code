@@ -1,10 +1,14 @@
 #include "main.h"
 #include "misc/robot_init.h"
 #include "pros/misc.h"
+#include "misc/control_loop.h"
+
 
 void initialize() {
 	pros::lcd::initialize();
 	chassis.calibrate();
+	colorsort_op.set_led_pwm(100);
+	intake_control_loop();
 }
 
 
@@ -24,7 +28,10 @@ void opcontrol() {
 		int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
 		chassis.arcade(leftY, rightX);
-		
+		driver_wing();
+		driver_intake();
+		driver_loader();
+		driver_undergoal();
 		pros::delay(20); 
 	}
 }

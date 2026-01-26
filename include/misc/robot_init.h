@@ -12,13 +12,12 @@
 #include "lemlib/api.hpp"
 #include "misc/subsystems/pneumatics.h"
 #include "misc/subsystems/intake.h"
-#include "misc/distance_reset.h"
+#include "misc/distance_movement.h"
 
 
 extern pros::Controller controller;
 
-extern pros::Motor left_intake_motor;
-extern pros::Motor right_intake_motor;
+extern pros::MotorGroup intake_motors;
 
 extern pros::MotorGroup left_drivetrain;
 extern pros::MotorGroup right_drivetrain;
@@ -49,3 +48,5 @@ extern lemlib::ControllerSettings lateral_controller;
 extern lemlib::ControllerSettings angular_controller;
 extern lemlib::Drivetrain drivetrain;
 extern lemlib::Chassis chassis;
+
+extern DistMove distance;

@@ -7,7 +7,6 @@
 void initialize() {
 	pros::lcd::initialize();
 	chassis.calibrate();
-	colorsort_op.set_led_pwm(100);
 	intake_control_loop();
 }
 

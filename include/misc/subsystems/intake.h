@@ -1,7 +1,6 @@
 #pragma once
 
 #include "pros/motor_group.hpp"
-#include "pros/optical.hpp"
 
 enum IntakeState {INTAKE, OUTTAKE, SCORELONG, SCOREMID, STOP};
 
@@ -13,9 +12,8 @@ class Intake{
     public:
     
         pros::MotorGroup* intake_motors;
-        pros::Optical* sorter;
 
-        Intake(pros::MotorGroup* intake_motors, pros::Optical* sorter);
+        Intake(pros::MotorGroup* intake_motors);
 
         /**
          * @brief spin intake helper for control loop

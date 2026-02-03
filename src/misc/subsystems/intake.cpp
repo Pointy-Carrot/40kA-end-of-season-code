@@ -4,8 +4,8 @@
 
 IntakeState intake_state = STOP;
 
-Intake::Intake(pros::MotorGroup* intake_motors, pros::Optical* sorter) :
-intake_motors(intake_motors), sorter(sorter) {};
+Intake::Intake(pros::MotorGroup* intake_motors) :
+intake_motors(intake_motors) {};
 
 void Intake::spin_intake(){
     intake_motors->move_velocity(rpms);

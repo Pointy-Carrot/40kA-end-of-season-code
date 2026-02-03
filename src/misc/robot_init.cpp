@@ -6,7 +6,6 @@
 #include "pros/adi.hpp"
 #include "pros/distance.hpp"
 #include "pros/motor_group.hpp"
-#include "pros/optical.hpp"
 #include "pros/rotation.hpp"
 
 
@@ -17,8 +16,8 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 pros::MotorGroup intake_motors({1, 2}, pros::MotorGearset::blue);
 
 // pros drivetrain motor groups
-pros::MotorGroup left_drivetrain({3, 4, 5}, pros::MotorGearset::blue);
-pros::MotorGroup right_drivetrain({6, 7, 8}, pros::MotorGearset::blue);
+pros::MotorGroup left_drivetrain({-1, 2, -3}, pros::MotorGearset::blue);
+pros::MotorGroup right_drivetrain({10, -9, 8}, pros::MotorGearset::blue);
 
 // pros pistons
 pros::adi::Pneumatics matchloader_piston('A', false);
@@ -33,15 +32,14 @@ SafePneumatics gate(&gate_piston);
 SafePneumatics undergoal(&undergoal_piston);
 
 // pros sensors
-pros::Rotation horizontal_tracking_wheel(9);
-pros::Rotation vertical_tracking_wheel(10);
-pros::Optical colorsort_op(11);
-pros::Distance left_distance(12);
-pros::Distance right_distance(13);
-pros::Imu imu(14);
+pros::Rotation horizontal_tracking_wheel(12);
+pros::Rotation vertical_tracking_wheel(20);
+pros::Distance left_distance(13);
+pros::Distance right_distance(14);
+pros::Imu imu(11);
 
 // Intake intake
-Intake intake(&intake_motors, &colorsort_op);
+Intake intake(&intake_motors);
 
 // lemlib constructors
 lemlib::TrackingWheel horiz_tracker(&horizontal_tracking_wheel, lemlib::Omniwheel::OLD_275_HALF, 0);

@@ -34,7 +34,6 @@ extern SafePneumatics undergoal;
 
 extern pros::Rotation horizontal_tracking_wheel;
 extern pros::Rotation vertical_tracking_wheel;
-extern pros::Optical colorsort_op;
 extern pros::Distance left_distance;
 extern pros::Distance right_distance;
 extern pros::Imu imu;

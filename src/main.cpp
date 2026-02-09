@@ -21,10 +21,12 @@ void autonomous() {}
 
 
 void opcontrol() {
-	
+	undergoal.extend();
+	wing_extender.extend();
+
 	while (true) {
 		int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-		int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+		int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * .95;
 
 		chassis.arcade(leftY, rightX);
 		driver_wing();

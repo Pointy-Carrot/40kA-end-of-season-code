@@ -31,6 +31,7 @@ void Intake::score_long(int rpm){
 }
 
 void Intake::score_mid(int rpm){
+    
     set_rpms(abs(rpm));
     intake_state = SCOREMID;
 }

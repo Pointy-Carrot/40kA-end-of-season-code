@@ -7,33 +7,44 @@ void driver_wing(){
     if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)){ // hold Y -> wing down
         wing.retract();
     } else{
-        wing.extend();
+        if(undergoal.is_extended()){
+            wing.extend();
+        }
     }
 }
 
 void driver_loader(){
     if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)){ // press B -> toggle loader
-        loader.toggle();
+        if(undergoal.is_extended()){
+            loader.toggle();
+        }
     }
 }
 
 void driver_undergoal(){
-    if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)){ // hold RIGHT -> undergoal down
-        undergoal.extend();
-    } else{
-        undergoal.retract();
+    if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)){ // press RIGHT -> toggle undergoal
+        if(undergoal.is_extended()){
+            undergoal.retract();
+            wing_extender.retract();
+            wing.retract();
+        } else{
+            undergoal.extend();
+            wing_extender.extend();
+        }
     }
 }
 
 void driver_intake(){
     if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){ // hold R1 -> score long
-        intake.score_long(127);
+        intake.score_long(600);
     } else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){ // hold R2 -> score mid
-        intake.score_mid(127);
+        intake.score_mid(600);
     } else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){ // hold L1 -> intake
-        intake.intake(127);
+        intake.intake(600);
     } else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){ // hold L2 -> outtake
-        intake.outtake(127);
+        intake.outtake(600);
+    } else{
+        intake.brake();
     }
 }
 
@@ -57,6 +68,7 @@ void intake_control_loop(){
             case SCOREMID:
                 gate.retract();
                 intake.spin_intake();
+            break;
             case STOP:
                 intake.stop_intake();
             break;

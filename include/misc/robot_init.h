@@ -26,11 +26,13 @@ extern pros::adi::Pneumatics matchloader_piston;
 extern pros::adi::Pneumatics wing_piston;
 extern pros::adi::Pneumatics gate_piston;
 extern pros::adi::Pneumatics undergoal_piston;
+extern pros::adi::Pneumatics wing_extender_piston;
 
 extern SafePneumatics loader;
 extern SafePneumatics wing;
 extern SafePneumatics gate;
 extern SafePneumatics undergoal;
+extern SafePneumatics wing_extender;
 
 extern pros::Rotation horizontal_tracking_wheel;
 extern pros::Rotation vertical_tracking_wheel;
@@ -47,5 +49,7 @@ extern lemlib::ControllerSettings lateral_controller;
 extern lemlib::ControllerSettings angular_controller;
 extern lemlib::Drivetrain drivetrain;
 extern lemlib::Chassis chassis;
+extern lemlib::ExpoDriveCurve throttle_curve;
+extern lemlib::ExpoDriveCurve steer_curve;
 
 extern DistMove distance;

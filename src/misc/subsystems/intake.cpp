@@ -48,3 +48,7 @@ void Intake::set_rpms(int rpm){
 int Intake::get_rpms(){
     return rpms;
 }
+
+int Intake::get_velocity(){
+    return intake_motors->get_actual_velocity();
+}

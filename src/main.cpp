@@ -2,6 +2,7 @@
 #include "misc/robot_init.h"
 #include "pros/misc.h"
 #include "misc/control_loop.h"
+#include "misc/autons.h"
 
 
 void initialize() {
@@ -17,14 +18,19 @@ void disabled() {}
 void competition_initialize() {}
 
 
-void autonomous() {}
+void autonomous() {
+	prog_skills();
+}
 
 
 void opcontrol() {
-	undergoal.extend();
+	undergoal.retract();
 	wing_extender.extend();
+	loader.retract();
 
 	while (true) {
+		// std::cout<<chassis.getPose().x<<std::endl;
+
 		int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * .95;
 
@@ -33,6 +39,7 @@ void opcontrol() {
 		driver_intake();
 		driver_loader();
 		driver_undergoal();
+		
 		pros::delay(20); 
 	}
 }

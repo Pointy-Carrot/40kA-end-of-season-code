@@ -36,5 +36,5 @@ class DistMove{
          * @param side what side sensor to use
          * @param color color of park zone closest to bot
          */
-        void reset_for_long_goal(SensorSide sensor_side, Color color);
+        float reset_for_long_goal(SensorSide sensor_side, Color color);
 };

@@ -49,7 +49,5 @@ extern lemlib::ControllerSettings lateral_controller;
 extern lemlib::ControllerSettings angular_controller;
 extern lemlib::Drivetrain drivetrain;
 extern lemlib::Chassis chassis;
-extern lemlib::ExpoDriveCurve throttle_curve;
-extern lemlib::ExpoDriveCurve steer_curve;
 
 extern DistMove distance;

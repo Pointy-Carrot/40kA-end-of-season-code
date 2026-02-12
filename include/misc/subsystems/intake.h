@@ -66,6 +66,12 @@ class Intake{
          * @param rpm 
          */
         void set_rpms(int rpm);
+        /**
+         * @brief Get the current velocity of the intake
+         * 
+         * @return int rpms
+         */
+        int get_velocity();
 };
 
 extern IntakeState intake_state;

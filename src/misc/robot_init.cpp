@@ -34,7 +34,7 @@ SafePneumatics undergoal(&undergoal_piston);
 SafePneumatics wing_extender(&wing_extender_piston);
 
 // pros sensors
-pros::Rotation horizontal_tracking_wheel(12);
+pros::Rotation horizontal_tracking_wheel(-12);
 pros::Rotation vertical_tracking_wheel(-20);
 pros::Distance left_distance(5);
 pros::Distance right_distance(6);
@@ -44,16 +44,14 @@ pros::Imu imu(11);
 Intake intake(&intake_motors);
 
 // lemlib constructors
-lemlib::TrackingWheel horiz_tracker(&horizontal_tracking_wheel, lemlib::Omniwheel::OLD_275_HALF, 0);
-lemlib::TrackingWheel vert_tracker(&vertical_tracking_wheel, lemlib::Omniwheel::NEW_2, 0);
+lemlib::TrackingWheel horiz_tracker(&horizontal_tracking_wheel, lemlib::Omniwheel::OLD_275_HALF, -5);
+lemlib::TrackingWheel vert_tracker(&vertical_tracking_wheel, lemlib::Omniwheel::OLD_275_HALF, -.25);
 lemlib::OdomSensors sensors(&vert_tracker, nullptr, &horiz_tracker, nullptr, &imu);
-lemlib::ControllerSettings lateral_controller(0, 0, 0, 3, 1, 100, 3, 500, 20);
-lemlib::ControllerSettings angular_controller(0, 0, 0, 1, 1, 100, 3, 500, 0);
+lemlib::ControllerSettings lateral_controller(16, 0, 700, 3, 1, 100, 3, 500, 20);
+lemlib::ControllerSettings angular_controller(4, 0, 36, 1, 1, 100, 3, 500, 0);
 lemlib::Drivetrain drivetrain(&left_drivetrain, &right_drivetrain, 10, lemlib::Omniwheel::NEW_4, 400, 2);
-lemlib::ExpoDriveCurve throttle_curve(3, 10, 1.019);
-lemlib::ExpoDriveCurve steer_curve(3, 10, 1.019);
-lemlib::Chassis chassis(drivetrain, lateral_controller, angular_controller, sensors, &throttle_curve, &steer_curve);
+lemlib::Chassis chassis(drivetrain, lateral_controller, angular_controller, sensors);
 
 
 // DistMove distance
-DistMove distance(&left_distance, 0, &right_distance, 0, &chassis);
+DistMove distance(&left_distance, 7, &right_distance, 7, &chassis);
